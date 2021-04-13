@@ -1,6 +1,6 @@
-const connection = require("../config/conn");
+const connection = require('../config/conn');
 
-const { ObjectId } = require("mongodb");
+const { ObjectId } = require('mongodb');
 
 // const getAll = async () =>
 // 	connection()
@@ -23,7 +23,7 @@ const { ObjectId } = require("mongodb");
 // }
 
 module.exports = {
-	// getAll,
-	// getById,
-	// createSong
+  // getAll,
+  // getById,
+  // createSong
 };

@@ -1,4 +1,4 @@
-use("StoreManager");
+use('StoreManager');
 // db.products.insertMany([
 //     {
 //       _id: ObjectId("5f762ca643893a773b2a5e48"),

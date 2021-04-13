@@ -1,4 +1,4 @@
-const Sales = require("../models/salesModel");
+const Sales = require('../models/salesModel');
 
 // const getAllSongs = async (req, res) => {
 // 	try {
@@ -12,5 +12,5 @@ const Sales = require("../models/salesModel");
 // };
 
 module.exports = {
-	// getAllSongs,
+  // getAllSongs,
 };
