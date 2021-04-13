@@ -1,0 +1,1 @@
+const Sales = require('../models/salesModel');

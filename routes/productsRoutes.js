@@ -3,7 +3,7 @@ const productsController = require('../controllers/productsController');
 
 const router = express.Router();
 
-// router.get('/songs', productsController.getAllSongs);
+router.post('/products', productsController.addProduct);
 // router.get('/songs/:id', productsController.getById);
 // router.post('/songs', productsController.createSong);
 
