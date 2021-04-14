@@ -23,6 +23,7 @@ const addProduct = async (req, res, next) => {
 
     res.status(SUCCESS).json(results);
   } catch (err) {
+    console.log("oi");
     console.log(err);
     res.status(FAIL).json({ message: err.message });
   }
