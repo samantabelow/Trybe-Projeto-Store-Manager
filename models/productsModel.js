@@ -11,7 +11,17 @@ const addProduct = async (name, quantity) =>
   connection()
     .then((db) => db.collection('products').insertOne({name, quantity}));
 
+const getAllProducts = async (name, quantity) =>
+  connection()
+    .then((db) => db.collection('products').find().toArray());
+
+const getProductById = async (id) =>
+  connection()
+    .then((db) => db.collection('products').findOne(ObjectId(id)));
+
 module.exports = {
   addProduct,
   checkForProductName,
+  getAllProducts,
+  getProductById,
 };
