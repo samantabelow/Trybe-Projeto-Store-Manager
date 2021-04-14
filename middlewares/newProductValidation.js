@@ -8,10 +8,6 @@ const newProductValidation = async (req, _res, next) => {
       status: 422, message: '"name" length must be at least 5 characters long'
     });
   }
-  const nameCheck = await Products.checkForProductName(name);
-  if (nameCheck) {
-    return next({ status: 422, message: 'Product already exists'});
-  }
   if (quantity < 1) {
     return next({ status: 422, message: '"quantity" must be larger than or equal to 1'});
   }

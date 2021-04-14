@@ -4,9 +4,15 @@ const middlewares = require('../middlewares');
 
 const router = express.Router();
 
-router.post('/products', middlewares.newProductValidation, productsController.addProduct);
+router.post('/products',
+  middlewares.nameAlreadyExists,
+  middlewares.newProductValidation,
+  productsController.addProduct);
 router.get('/products', productsController.getAllProducts);
 router.get('/products/:id', productsController.getProductById);
+router.put('/products/:id',
+  middlewares.newProductValidation,
+  productsController.updateProduct);
 
 router.use(middlewares.errorMiddleware);
 
