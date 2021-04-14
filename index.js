@@ -1,13 +1,13 @@
+const express = require('express');
+const routes = require('./routes');
+const app = express();
+
 // não remova esse endpoint, e para o avaliador funcionar
 app.get('/', (_request, response) => {
   response.send();
 });
 
-const express = require('express');
-const routes = require('./routes');
 const PORT = 3000;
-
-const app = express();
 
 app.use(express.json());
 app.use(routes.productsRoutes);
