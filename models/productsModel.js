@@ -7,8 +7,9 @@ const getProductsList = async () => connection().then((db) => db.collection('pro
 const checkForProductName = async (name) => getProductsList()
   .then((products) => products.findOne( {name} ));
 
-const addProduct = async (name, quantity) => connection()
-  .then((db) => db.collection('products').insertOne({name, quantity}));
+const addProduct = async (name, quantity) =>
+  connection()
+    .then((db) => db.collection('products').insertOne({name, quantity}));
 
 module.exports = {
   addProduct,

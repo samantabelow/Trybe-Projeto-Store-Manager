@@ -2,6 +2,7 @@ const Products = require('../models/productsModel');
 
 const SUCCESS = 201;
 const FAIL = 500;
+const validationError = 422;
 
 const addProduct = async (req, res, next) => {
   const {name, quantity} = req.body;
@@ -12,7 +13,6 @@ const addProduct = async (req, res, next) => {
     });
   }
   const nameCheck = await Products.checkForProductName(name);
-  console.log(nameCheck);
   if (nameCheck) {
     return next({ status: 422, message: 'Product already exists'});
   }
@@ -24,10 +24,9 @@ const addProduct = async (req, res, next) => {
   }
   try {
     const results = await Products.addProduct(name, quantity);
-
-    res.status(SUCCESS).json(results);
+    console.log(results);
+    res.status(SUCCESS).json(results.ops[0]);
   } catch (err) {
-    console.log('oi');
     console.log(err);
     res.status(FAIL).json({ message: err.message });
   }
