@@ -13,6 +13,7 @@ router.get('/products/:id', productsController.getProductById);
 router.put('/products/:id',
   middlewares.newProductValidation,
   productsController.updateProduct);
+router.delete('/products/:id', productsController.deleteProduct);
 
 router.use(middlewares.errorMiddleware);
 

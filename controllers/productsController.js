@@ -43,12 +43,26 @@ const updateProduct = async (req, res) => {
   const { name, quantity } = req.body;
   try {
     const results = await Products.updateProduct(id, name, quantity);
+    if (results)
+      res.status(SUCCESS_GET).json(results[0]);
+  } catch (err) {
+    res.status(SYSTEM_FAIL).json({ message: err.message });
+  }
+};
+
+const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const results = await Products.deleteProduct(id);
     console.log(results);
     if (results)
       res.status(SUCCESS_GET).json(results[0]);
   } catch (err) {
     console.log(err);
-    res.status(SYSTEM_FAIL).json({ message: err.message });
+    res.status(FAIL).json({ 'err': {
+      'code': 'invalid_data',
+      'message': 'Wrong id format'
+    }  });
   }
 };
 
@@ -57,4 +71,5 @@ module.exports = {
   getAllProducts,
   getProductById,
   updateProduct,
+  deleteProduct,
 };
