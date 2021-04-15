@@ -8,7 +8,6 @@ const addSale = async (req, res) => {
   const itemsSold = req.body;
   try {
     const results = await Sales.addSale(itemsSold);
-    console.log(results);
     res.status(SUCCESS).json(results.ops[0]);
   } catch (err) {
     res.status(SYSTEM_FAIL).json({ message: err.message });
@@ -18,8 +17,7 @@ const addSale = async (req, res) => {
 const getAllSales = async (_req, res) => {
   try {
     const results = await Sales.getAllSales();
-    // console.log(results);
-    res.status(SUCCESS_GET).json({sales: results});
+    res.status(SUCCESS).json({sales: results});
   } catch (err) {
     res.status(FAIL).json({ 'err': {
       'code': 'not_found',
@@ -33,7 +31,7 @@ const getSaleById = async (req, res) => {
   try {
     const results = await Sales.getSaleById(id);
     if (results)
-      res.status(SUCCESS_GET).json(results);
+      res.status(SUCCESS).json(results);
   } catch (err) {
     res.status(FAIL).json({ 'err': {
       'code': 'not_found',
@@ -58,7 +56,7 @@ const deleteSale = async (req, res) => {
   const { id } = req.params;
   try {
     const results = await Sales.deleteSale(id);
-    console.log(results);
+    // console.log(results);
     if (results)
       res.status(SUCCESS_GET).json(results[0]);
   } catch (err) {

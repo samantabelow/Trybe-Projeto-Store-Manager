@@ -3,7 +3,6 @@ const Products = require('../models/productsModel');
 const nameExistsSales = async (req, res, next) => {
   const itemsSold = req.body;
   const FAIL = 422;
-  console.log(itemsSold);
   itemsSold.forEach(item => {
     const idCheck = async () => await Products.checkForProductId(item.productId);
     if (!idCheck) {
