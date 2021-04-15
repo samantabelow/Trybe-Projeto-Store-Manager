@@ -1,13 +1,16 @@
 const Sales = require('../models/salesModel');
 
-const newSaleValidation = async (req, _res, next) => {
+const newSaleValidation = async (req, res, next) => {
   const itemsSold = req.body;
-  if (quantity < 1) {
-    return next({ status: 422, message: '"quantity" must be larger than or equal to 1'});
-  }
-  if (typeof quantity !== 'number') {
-    return next({ status: 422, message: '"quantity" must be a number'});
-  }
+  const FAIL = 422;
+  itemsSold.forEach(item => {
+    if (item.quantity < 1 || typeof item.quantity !== 'number') {
+      return res.status(FAIL).json({ 'err': {
+        'code': 'invalid_data',
+        'message': 'Wrong product ID or invalid quantity'
+      }});
+    }
+  });
   next();
 };
 

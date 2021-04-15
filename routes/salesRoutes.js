@@ -8,8 +8,8 @@ router.post('/sales',
   middlewares.nameExistsSales,
   middlewares.newSaleValidation,
   salesController.addSale);
-router.get('/sales', salesController.getAllSales);
-router.get('/sales/:id', salesController.getSaleById);
+// router.get('/sales', salesController.getAllSales);
+// router.get('/sales/:id', salesController.getSaleById);
 // router.put('/sales/:id',
 //   middlewares.newSaleValidation,
 //   salesController.updateSale);

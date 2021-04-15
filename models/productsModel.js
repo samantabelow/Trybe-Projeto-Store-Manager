@@ -7,6 +7,9 @@ const getProductsList = async () => connection().then((db) => db.collection('pro
 const checkForProductName = async (name) => getProductsList()
   .then((products) => products.findOne( {name} ));
 
+const checkForProductId = async (id) => getProductsList()
+  .then((products) => products.findOne( {id} ));
+
 const addProduct = async (name, quantity) =>
   connection()
     .then((db) => db.collection('products').insertOne({name, quantity}));
@@ -37,6 +40,7 @@ const deleteProduct = async (id) =>
 module.exports = {
   addProduct,
   checkForProductName,
+  checkForProductId,
   getAllProducts,
   getProductById,
   updateProduct,

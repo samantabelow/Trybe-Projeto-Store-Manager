@@ -1,18 +1,18 @@
 const Products = require('../models/productsModel');
 
-const nameExistsSales = async (req, _res, next) => {
-  const {itemsSold} = req.body;
-  // fazer um map fazendo nameCheck de todos os itensSold
+const nameExistsSales = async (req, res, next) => {
+  const itemsSold = req.body;
+  const FAIL = 422;
+  console.log(itemsSold);
   itemsSold.forEach(item => {
-    const nameCheck = await Products.checkForProductName(item.name);
-    if (!nameCheck) {
-      return next({ status: 422, message: 'Product already exists'});
-  }
+    const idCheck = async () => await Products.checkForProductId(item.productId);
+    if (!idCheck) {
+      return res.status(FAIL).json({ 'err': {
+        'code': 'invalid_data',
+        'message': 'Wrong product ID or invalid quantity'
+      }});
+    }
   });
-  const nameCheck = await Products.checkForProductName(name);
-  if (nameCheck) {
-    return next({ status: 422, message: 'Product already exists'});
-  }
   next();
 };
 

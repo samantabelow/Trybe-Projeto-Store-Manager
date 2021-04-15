@@ -1,7 +1,6 @@
 const Sales = require('../models/salesModel');
 
-const SUCCESS = 201;
-const SUCCESS_GET = 200;
+const SUCCESS = 200;
 const SYSTEM_FAIL = 500;
 const FAIL = 404;
 
@@ -9,6 +8,7 @@ const addSale = async (req, res) => {
   const itemsSold = req.body;
   try {
     const results = await Sales.addSale(itemsSold);
+    console.log(results);
     res.status(SUCCESS).json(results.ops[0]);
   } catch (err) {
     res.status(SYSTEM_FAIL).json({ message: err.message });
@@ -18,7 +18,7 @@ const addSale = async (req, res) => {
 const getAllSales = async (_req, res) => {
   try {
     const results = await Sales.getAllSales();
-    console.log(results);
+    // console.log(results);
     res.status(SUCCESS_GET).json({sales: results});
   } catch (err) {
     res.status(FAIL).json({ 'err': {
