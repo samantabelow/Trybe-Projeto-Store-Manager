@@ -3,6 +3,7 @@ const Sales = require('../models/salesModel');
 const SUCCESS = 200;
 const SYSTEM_FAIL = 500;
 const FAIL = 404;
+const FAIL422 = 422;
 
 const addSale = async (req, res) => {
   const itemsSold = req.body;
@@ -45,7 +46,7 @@ const updateSale = async (req, res) => {
   const item = req.body;
   try {
     const results = await Sales.updateSale(id, item);
-    console.log(results);
+    // console.log(results);
     if (results)
       res.status(SUCCESS).json(results);
   } catch (err) {
@@ -59,12 +60,12 @@ const deleteSale = async (req, res) => {
     const results = await Sales.deleteSale(id);
     // console.log(results);
     if (results)
-      res.status(SUCCESS_GET).json(results[0]);
+      res.status(SUCCESS).json(results[0]);
   } catch (err) {
     console.log(err);
-    res.status(FAIL).json({ 'err': {
+    res.status(FAIL422).json({ 'err': {
       'code': 'invalid_data',
-      'message': 'Wrong id format'
+      'message': 'Wrong sale ID format'
     }  });
   }
 };
