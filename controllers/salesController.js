@@ -61,7 +61,7 @@ const deleteSale = async (req, res) => {
       res.status(SUCCESS).json(deleteCount);
   } catch (err) {
     console.log(err);
-    res.status(FAIL422).json({ err: results.err });
+    res.status(SYSTEM_FAIL).send();
   }
 };
 
