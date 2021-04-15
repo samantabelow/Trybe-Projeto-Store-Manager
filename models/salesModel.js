@@ -4,7 +4,7 @@ const { ObjectId } = require('mongodb');
 
 const checkForSaleId = async (id) =>
   connection()
-    .then((db) => db.collection('sales').findOne(ObjectId(id)))
+    .then((db) => db.collection('sales').findOne(ObjectId(id)));
 
 const addSale = async (itensSold) =>
   connection()
@@ -18,14 +18,14 @@ const getSaleById = async (id) =>
   connection()
     .then((db) => db.collection('sales').findOne(ObjectId(id)));
 
-const updateSale = async (id, item) => {
+const updateSale = async (id, itensSold) => {
   await connection()
     .then((db) => db.collection('sales').updateOne(
       { _id: ObjectId(id)},
-      {$set: {item} }
+      {$set: {itensSold} }
     ));
-  return await connection()
-    .then((db) => db.collection('sales').find().toArray());
+  return connection()
+    .then((db) => db.collection('sales').findOne(ObjectId(id)));
 };
 
 const deleteSale = async (id) =>

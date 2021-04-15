@@ -13,7 +13,7 @@ router.get('/sales/:id', salesController.getSaleById);
 router.put('/sales/:id',
   middlewares.newSaleValidation,
   salesController.updateSale);
-router.delete('/sales/:id', middlewares.saleIdValid, salesController.deleteSale);
+// router.delete('/sales/:id', middlewares.saleIdValid, salesController.deleteSale);
 
 router.use(middlewares.errorMiddleware);
 

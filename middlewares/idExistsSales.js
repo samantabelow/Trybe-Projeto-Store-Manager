@@ -11,7 +11,7 @@ const idExistsSales = async (req, res, next) => {
         'message': 'Wrong product ID or invalid quantity'
       }});
     }
-  return;
+    return;
   });
   next();
 };

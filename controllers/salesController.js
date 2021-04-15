@@ -43,10 +43,10 @@ const getSaleById = async (req, res) => {
 
 const updateSale = async (req, res) => {
   const { id } = req.params;
-  const item = req.body;
+  const itensSold = req.body;
   try {
-    const results = await Sales.updateSale(id, item);
-    // console.log(results);
+    const results = await Sales.updateSale(id, itensSold);
+    console.log(results);
     if (results)
       res.status(SUCCESS).json(results);
   } catch (err) {
