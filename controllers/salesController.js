@@ -46,7 +46,6 @@ const updateSale = async (req, res) => {
   const itensSold = req.body;
   try {
     const results = await Sales.updateSale(id, itensSold);
-    console.log(results);
     if (results)
       res.status(SUCCESS).json(results);
   } catch (err) {
@@ -57,16 +56,12 @@ const updateSale = async (req, res) => {
 const deleteSale = async (req, res) => {
   const { id } = req.params;
   try {
-    const results = await Sales.deleteSale(id);
-    // console.log(results);
-    if (results)
-      res.status(SUCCESS).json(results[0]);
+    const { deleteCount } = await Sales.deleteSale(id);
+    if (deleteCount >= 1)
+      res.status(SUCCESS).json(deleteCount);
   } catch (err) {
     console.log(err);
-    res.status(FAIL422).json({ 'err': {
-      'code': 'invalid_data',
-      'message': 'Wrong sale ID format'
-    }  });
+    res.status(FAIL422).json({ err: results.err });
   }
 };
 
