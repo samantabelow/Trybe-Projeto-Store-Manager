@@ -56,12 +56,12 @@ const updateSale = async (req, res) => {
 const deleteSale = async (req, res) => {
   const { id } = req.params;
   try {
-    const { deleteCount } = await Sales.deleteSale(id);
-    if (deleteCount >= 1)
-      res.status(SUCCESS).json(deleteCount);
+    const results = await Sales.deleteSale(id);
+    if (results)
+      res.status(SUCCESS).json(results);
   } catch (err) {
     console.log(err);
-    res.status(SYSTEM_FAIL).send();
+    res.status(FAIL422).json({ err: results.err });
   }
 };
 

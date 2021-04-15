@@ -28,18 +28,13 @@ const updateSale = async (id, itensSold) => {
     .then((db) => db.collection('sales').findOne(ObjectId(id)));
 };
 
-// const deleteSale = async (id) => {
-//   connection()
-//     .then((db) => db.collection('sales').deleteOne(
-//       { _id: ObjectId(id)} ));
-//   return connection()
-//     .then((db) => db.collection('sales').find().toArray());
-// }
-
-const deleteSale = async (id) =>
+const deleteSale = async (id) => {
   connection()
     .then((db) => db.collection('sales').deleteOne(
       { _id: ObjectId(id)} ));
+  return connection()
+    .then((db) => db.collection('sales').find().toArray());
+};
 
 module.exports = {
   addSale,
