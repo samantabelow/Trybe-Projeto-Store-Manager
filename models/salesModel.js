@@ -14,11 +14,11 @@ const getSaleById = async (id) =>
   connection()
     .then((db) => db.collection('sales').findOne(ObjectId(id)));
 
-const updateSale = async (id, name, quantity) => {
+const updateSale = async (id, item) => {
   connection()
     .then((db) => db.collection('sales').updateOne(
       { _id: ObjectId(id)},
-      {$set: {name, quantity} }
+      {$set: {item} }
     ));
   return connection()
     .then((db) => db.collection('sales').find().toArray());

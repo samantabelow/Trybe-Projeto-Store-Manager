@@ -42,11 +42,12 @@ const getSaleById = async (req, res) => {
 
 const updateSale = async (req, res) => {
   const { id } = req.params;
-  const { name, quantity } = req.body;
+  const item = req.body;
   try {
-    const results = await Sales.updateSale(id, name, quantity);
+    const results = await Sales.updateSale(id, item);
+    console.log(results);
     if (results)
-      res.status(SUCCESS_GET).json(results[0]);
+      res.status(SUCCESS).json(results);
   } catch (err) {
     res.status(SYSTEM_FAIL).json({ message: err.message });
   }

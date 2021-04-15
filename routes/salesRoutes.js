@@ -10,9 +10,9 @@ router.post('/sales',
   salesController.addSale);
 router.get('/sales', salesController.getAllSales);
 router.get('/sales/:id', salesController.getSaleById);
-// router.put('/sales/:id',
-//   middlewares.newSaleValidation,
-//   salesController.updateSale);
+router.put('/sales/:id',
+  middlewares.newSaleValidation,
+  salesController.updateSale);
 // router.delete('/sales/:id', salesController.deleteSale);
 
 router.use(middlewares.errorMiddleware);
