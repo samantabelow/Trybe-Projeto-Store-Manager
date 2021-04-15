@@ -1,10 +1,20 @@
 const express = require('express');
 const salesController = require('../controllers/salesController');
+const middlewares = require('../middlewares');
 
 const router = express.Router();
 
-// router.get('/songs', salesController.getAllSongs);
-// router.get('/songs/:id', salesController.getById);
-// router.post('/songs', salesController.createSong);
+router.post('/sales',
+  middlewares.nameExistsSales,
+  middlewares.newSaleValidation,
+  salesController.addSale);
+router.get('/sales', salesController.getAllSales);
+router.get('/sales/:id', salesController.getSaleById);
+// router.put('/sales/:id',
+//   middlewares.newSaleValidation,
+//   salesController.updateSale);
+// router.delete('/sales/:id', salesController.deleteSale);
+
+router.use(middlewares.errorMiddleware);
 
 module.exports = router;

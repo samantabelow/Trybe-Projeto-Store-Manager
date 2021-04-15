@@ -54,11 +54,9 @@ const deleteProduct = async (req, res) => {
   const { id } = req.params;
   try {
     const results = await Products.deleteProduct(id);
-    console.log(results);
     if (results)
       res.status(SUCCESS_GET).json(results[0]);
   } catch (err) {
-    console.log(err);
     res.status(FAIL).json({ 'err': {
       'code': 'invalid_data',
       'message': 'Wrong id format'
