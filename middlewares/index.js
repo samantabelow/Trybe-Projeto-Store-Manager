@@ -4,6 +4,7 @@ const nameAlreadyExists = require('./nameAlreadyExists');
 const newSaleValidation = require('./newSaleValidation');
 const idExistsSales = require('./idExistsSales');
 const saleIdValid = require('./saleIdValid');
+const saleIdValidGET = require('./saleIdValidGET');
 
 module.exports = {
   errorMiddleware,
@@ -12,4 +13,5 @@ module.exports = {
   newSaleValidation,
   idExistsSales,
   saleIdValid,
+  saleIdValidGET,
 };

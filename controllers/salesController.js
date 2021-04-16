@@ -46,7 +46,7 @@ const updateSale = async (req, res) => {
   const itensSold = req.body;
   try {
     const results = await Sales.updateSale(id, itensSold);
-    if (results)
+    if (results !== null)
       res.status(SUCCESS).json(results);
   } catch (err) {
     res.status(SYSTEM_FAIL).json({ message: err.message });
