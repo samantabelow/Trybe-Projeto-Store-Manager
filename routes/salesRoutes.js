@@ -5,7 +5,7 @@ const middlewares = require('../middlewares');
 const router = express.Router();
 
 router.get('/sales', salesController.getAllSales);
-router.get('/sales/:id', middlewares.saleIdValidGET, salesController.getSaleById);
+router.get('/sales/:id', salesController.getSaleById);
 router.post('/sales',
   middlewares.idExistsSales,
   middlewares.newSaleValidation,
